@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Text Encryption</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Encryption</h1>
+        <form method="post">
+            <label for="text">Text:</label>
+            <textarea id="text" name="text" required></textarea>
+            <label for="key">Key:</label>
+            <input type="text" id="key" name="key" required>
+            <label for="operation">Operation:</label>
+            <select id="operation" name="operation">
+                <option value="encrypt">Encrypt</option>
+                <option value="decrypt">Decrypt</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
